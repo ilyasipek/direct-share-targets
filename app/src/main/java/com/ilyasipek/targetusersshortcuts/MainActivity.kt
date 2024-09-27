@@ -1,6 +1,8 @@
 package com.ilyasipek.targetusersshortcuts
 
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
@@ -53,7 +55,7 @@ class MainActivity : ComponentActivity() {
                                 },
                                 modifier = Modifier.weight(1f)
                             ) {
-                                Text(text = "User1")
+                                Text(text = "John")
                             }
                             Button(
                                 onClick = {
@@ -61,7 +63,7 @@ class MainActivity : ComponentActivity() {
                                 },
                                 modifier = Modifier.weight(1f)
                             ) {
-                                Text(text = "User2")
+                                Text(text = "David")
                             }
                             Button(
                                 onClick = {
@@ -69,7 +71,7 @@ class MainActivity : ComponentActivity() {
                                 },
                                 modifier = Modifier.weight(1f)
                             ) {
-                                Text(text = "User3")
+                                Text(text = "Michael")
                             }
                         }
 
@@ -84,7 +86,7 @@ class MainActivity : ComponentActivity() {
                                 },
                                 modifier = Modifier.weight(1f)
                             ) {
-                                Text(text = "User1")
+                                Text(text = "John")
                             }
                             Button(
                                 onClick = {
@@ -92,7 +94,7 @@ class MainActivity : ComponentActivity() {
                                 },
                                 modifier = Modifier.weight(1f)
                             ) {
-                                Text(text = "User2")
+                                Text(text = "David")
                             }
                             Button(
                                 onClick = {
@@ -100,7 +102,7 @@ class MainActivity : ComponentActivity() {
                                 },
                                 modifier = Modifier.weight(1f)
                             ) {
-                                Text(text = "User3")
+                                Text(text = "Michael")
                             }
                         }
 
@@ -116,7 +118,7 @@ class MainActivity : ComponentActivity() {
                                 },
                                 modifier = Modifier.weight(1f)
                             ) {
-                                Text(text = "User1")
+                                Text(text = "John")
                             }
                             Button(
                                 onClick = {
@@ -124,7 +126,7 @@ class MainActivity : ComponentActivity() {
                                 },
                                 modifier = Modifier.weight(1f)
                             ) {
-                                Text(text = "User2")
+                                Text(text = "David")
                             }
                             Button(
                                 onClick = {
@@ -132,7 +134,7 @@ class MainActivity : ComponentActivity() {
                                 },
                                 modifier = Modifier.weight(1f)
                             ) {
-                                Text(text = "User3")
+                                Text(text = "Michael")
                             }
                         }
                     }
@@ -178,17 +180,24 @@ class MainActivity : ComponentActivity() {
         Toast.makeText(this, "Shortcuts is removed.", Toast.LENGTH_SHORT).show()
     }
 
+    private fun getImageAsBitmap(resourceId: Int): Bitmap{
+        val options = BitmapFactory.Options().apply {
+            inSampleSize = 4
+        }
+        return BitmapFactory.decodeResource(resources, resourceId, options)
+    }
+
     private fun buildUser1Shortcut(
         capability: String? = null,
     ) = ShortcutInfoCompat.Builder(this, USER_ID_1)
-        .setShortLabel("iipek")
-        .setIcon(IconCompat.createWithResource(this, R.drawable.ic_launcher_foreground))
-        .setLongLabel("Ilyas ipek")
+        .setShortLabel("John")
+        .setIcon(IconCompat.createWithAdaptiveBitmap(getImageAsBitmap(R.drawable.profile_pic)))
+        .setLongLabel("John Smith")
         .setCategories(categories)
         .setLongLived(true)
         .setPerson(
             Person.Builder()
-                .setName("Ilyas ipek")
+                .setName("John Smith")
                 .build()
         )
         .setIntent(getChatActivityIntent()) // Also you can use setIntents to create a stack of activities for example (MainActivity -> ChatActivity) this will enable the user to navigate back to an activity we want
@@ -200,14 +209,14 @@ class MainActivity : ComponentActivity() {
         .build()
 
     private fun buildUser2Shortcut(capability: String? = null) = ShortcutInfoCompat.Builder(this, USER_ID_2)
-        .setShortLabel("username2")
-        .setIcon(IconCompat.createWithResource(this, R.drawable.baseline_17mp_24))
-        .setLongLabel("Name Lastname2")
+        .setShortLabel("David")
+        .setIcon(IconCompat.createWithAdaptiveBitmap(getImageAsBitmap(R.drawable.profile_pic2)))
+        .setLongLabel("David Jones")
         .setCategories(categories)
         .setLongLived(true)
         .setPerson(
             Person.Builder()
-                .setName("Name Lastname2")
+                .setName("David Jones")
                 .build()
         )
         .setIntent(getChatActivityIntent()) // Also you can use setIntents to create a stack of activities for example (MainActivity -> ChatActivity) this will enable the user to navigate back to an activity we want
@@ -221,14 +230,14 @@ class MainActivity : ComponentActivity() {
     private fun buildUser3Shortcut(
         capability: String? = null,
     ) = ShortcutInfoCompat.Builder(this, USER_ID_3)
-        .setShortLabel("username3")
-        .setIcon(IconCompat.createWithResource(this, R.drawable.baseline_17mp_24))
-        .setLongLabel("Name Lastname3")
+        .setShortLabel("Michael")
+        .setIcon(IconCompat.createWithAdaptiveBitmap(getImageAsBitmap(R.drawable.profile_pic3)))
+        .setLongLabel("Michael Brown")
         .setCategories(categories)
         .setLongLived(true)
         .setPerson(
             Person.Builder()
-                .setName("Name Lastname3")
+                .setName("Michael Brown")
                 .build()
         )
         .setIntent(getChatActivityIntent()) // Also you can use setIntents to create a stack of activities for example (MainActivity -> ChatActivity) this will enable the user to navigate back to an activity we want
