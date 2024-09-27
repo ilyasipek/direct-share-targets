@@ -1,0 +1,11 @@
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <share-target android:targetClass="com.ilyasipek.targetusersshortcuts.ChatActivity">
+        <data android:mimeType="text/plain" />
+        <data android:mimeType="image/*" />
+        <data android:mimeType="video/*" />
+        <category android:name="com.example.android.sharingshortcuts.category.TEXT_SHARE_TARGET" />
+        <category android:name="com.example.android.sharingshortcuts.category.IMAGE_SHARE_TARGET" />
+        <category android:name="com.example.android.sharingshortcuts.category.VIDEO_SHARE_TARGET" />
+
+    </share-target>
+</shortcuts>
